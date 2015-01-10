@@ -12,7 +12,7 @@ And = \xy.x y F
 Or  = \xy.x T y
 Not = \x.x F T
 
-;; Higher-order functions
+;; General functions
 
 Id   = \x.x
 Comp = \fgx.f(gx)
@@ -37,8 +37,14 @@ LT?   = \mn.And(LTEq? m n)(Not(Eq? m n))
 GT?   = \mn.Not(LTEq? m n)
 GTEq? = \mn.Not(LT? m n)
 
+;; Math functions
+
 Max = \ab.(GT? a b)ab
 Min = \ab.(GT? a b)ba
+
+GCD = \nm.If(Zero? m)n(GCD m (Quot n m))
+
+Factorial = \n.If(Zero? n)1(Mult n (Factorial (Pred n)))
 
 ;; Lists
 
@@ -54,6 +60,9 @@ Drop = \np.n Cdr p
 Map = \fs.If(Nil? s)s(Cons(f(Car s))(Map f(Cdr s)))
 Filter = \ps.If(Nil? s)s(If(p(Car s))
   (Cons(Car s)(Filter p (Cdr s)))(Filter p (Cdr s)))
+
+Length = \p.If(Nil? p)Zero(Succ(Length(Cdr p)))
+Append = \pq.If(Nil? p)q(Cons(Car p)(Append(Cdr p)q))
 
 Range = \n.Range' n Nil
 Range' = \ns.If(Zero? n)s(Range'(Pred n)(Cons n s))
