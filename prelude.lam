@@ -55,14 +55,27 @@ Cdr  = \p.p F
 Nil  = \x.T
 Nil? = \p.p(\xy.F)
 
+Get = \np.If(Zero? n)(Car p)(Get(Pred n)(Cdr p))
 Take = \np.If(Zero? n)Nil(Cons(Car p)(Take(Pred n)(Cdr p)))
 Drop = \np.n Cdr p
+TakeWhile = \ps.If(Nil? s)s(If(p(Car s))
+  (Cons(Car s)(TakeWhile p (Cdr s)))Nil)
+DropWhile = \ps.If(Nil? s)s(If(p(Car s))
+  (DropWhile p (Cdr s))s)
 Map = \fs.If(Nil? s)s(Cons(f(Car s))(Map f(Cdr s)))
 Filter = \ps.If(Nil? s)s(If(p(Car s))
   (Cons(Car s)(Filter p (Cdr s)))(Filter p (Cdr s)))
+FoldL = \fxp.If(Nil? x)(FoldL f (fx(Car p)) (Cdr p))
+Concat = FoldL Append Nil
+
+Any = \ps.If(Nil? p)False(If(p(Car s))True(Any p (Cdr s)))
+All = \ps.If(Nil? p)True(If(p(Car s))(All p (Cdr s))False)
 
 Length = \p.If(Nil? p)Zero(Succ(Length(Cdr p)))
 Append = \pq.If(Nil? p)q(Cons(Car p)(Append(Cdr p)q))
+
+Reverse = \p.Reverse' p Nil
+Reverse' = \pa.If(Nil? p)a(Reverse'(Cdr p)(Cons(Car p)a))
 
 Range = \n.Range' n Nil
 Range' = \ns.If(Zero? n)s(Range'(Pred n)(Cons n s))
