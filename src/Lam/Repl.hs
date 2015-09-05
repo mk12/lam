@@ -3,7 +3,6 @@
 -- | Implements the read-eval-print loop in the 'repl' function.
 module Lam.Repl (loadFile, startRepl) where
 
-import Control.Applicative ((<$>))
 import Control.Error.Util (maybeT)
 import Control.Monad (foldM)
 import Control.Monad.IO.Class (MonadIO, liftIO)

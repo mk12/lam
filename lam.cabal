@@ -10,7 +10,7 @@ category:           Math
 build-type:         Simple
 extra-source-files: README.md
 cabal-version:      >=1.10
-tested-with:        GHC==7.8.3
+tested-with:        GHC==7.10.2
 
 source-repository head
   Type:     git
@@ -19,7 +19,7 @@ source-repository head
 executable lam
   main-is:          Main.hs
   other-modules:    Lam.Eval Lam.Parse Lam.Repl
-  build-depends:    base >=4.7 && <4.8, containers, directory, errors,
+  build-depends:    base >=4.8 && <4.9, containers, directory, errors,
                     haskeline, parsec, split, transformers
   hs-source-dirs:   src
   default-language: Haskell2010

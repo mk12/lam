@@ -3,7 +3,6 @@
 -- | Uses "Text.Parsec" to parse lambda expressions.
 module Lam.Parse (parse, whiteChars) where
 
-import Control.Applicative ((<$>), (<*>), (*>), (<*))
 import Data.List (delete)
 import Text.Parsec.Error (errorMessages, showErrorMessages)
 import Text.Parsec.Prim ((<|>), (<?>))

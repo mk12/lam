@@ -15,7 +15,6 @@ module Lam.Eval
 , bind
 ) where
 
-import Control.Applicative ((<$>))
 import Data.Char (isDigit)
 import Data.Maybe (fromMaybe)
 import qualified Data.Set as S
