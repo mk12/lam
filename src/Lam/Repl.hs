@@ -79,7 +79,6 @@ process app@(Application s a)
         Function f (Symbol g) | f == g -> symStr "1"
         Function f (Function x body) -> fromMaybe app $ decodeNum f x body
         _ -> app
-process app@(Application s a)
     | s == symStr "?" = case a of
         Function x (Function y (Symbol z)) -> fromMaybe app $ decodeBool x y z
         _ -> app
