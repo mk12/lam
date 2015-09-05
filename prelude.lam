@@ -65,7 +65,7 @@ DropWhile = \ps.If(Nil? s)s(If(p(Car s))
 Map = \fs.If(Nil? s)s(Cons(f(Car s))(Map f(Cdr s)))
 Filter = \ps.If(Nil? s)s(If(p(Car s))
   (Cons(Car s)(Filter p (Cdr s)))(Filter p (Cdr s)))
-FoldL = \fxp.If(Nil? x)(FoldL f (fx(Car p)) (Cdr p))
+FoldL = \fxp.If(Nil? x)x(FoldL f (fx(Car p)) (Cdr p))
 Concat = FoldL Append Nil
 
 Any = \ps.If(Nil? p)False(If(p(Car s))True(Any p (Cdr s)))
